@@ -2,7 +2,10 @@ const express = require('express');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 
+const passport = require('passport');
+const initializePassport = require('./config/passport');
 const authRoutes = require('./routes/authRoutes');
+const oauthRoutes = require('./routes/oauthRoutes');
 const productRoutes = require('./routes/productRoutes');
 const cartRoutes = require('./routes/cartRoutes');
 const orderRoutes = require('./routes/orderRoutes');
@@ -10,6 +13,7 @@ const paymentRoutes = require('./routes/paymentRoutes');
 const inquiryRoutes = require('./routes/inquiryRoutes');
 const siteSettingsRoutes = require('./routes/siteSettingsRoutes');
 const adminAuthRoutes = require('./routes/adminAuthRoutes');
+const adminOauthRoutes = require('./routes/adminOauthRoutes');
 const { checkEmailHealth } = require('./controllers/healthController');
 
 const app = express();
@@ -43,8 +47,12 @@ app.get('/api/health', (_req, res) => {
 
 app.get('/api/health/email', checkEmailHealth);
 
+initializePassport();
+app.use(passport.initialize());
 app.use('/api/auth', authRoutes);
+app.use('/api/auth', oauthRoutes);
 app.use('/api/admin/auth', adminAuthRoutes);
+app.use('/api/admin/auth', adminOauthRoutes);
 app.use('/api/products', productRoutes);
 app.use('/api/cart', cartRoutes);
 app.use('/api/orders', orderRoutes);

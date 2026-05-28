@@ -9,6 +9,7 @@ import Settings from './pages/Settings';
 import AdminLogin from './pages/AdminLogin';
 import AdminSignup from './pages/AdminSignup';
 import AdminForgotPassword from './pages/AdminForgotPassword';
+import OAuthCallbackPage from './pages/OAuthCallbackPage';
 import { useAdminAuth } from './context/AdminAuthContext';
 import './App.css';
 
@@ -29,6 +30,7 @@ function App() {
         <Route path="/login" element={<AdminLogin />} />
         <Route path="/signup" element={<AdminSignup />} />
         <Route path="/forgot-password" element={<AdminForgotPassword />} />
+        <Route path="/oauth/callback" element={<OAuthCallbackPage />} />
         <Route path="*" element={<Navigate to="/login" replace />} />
       </Routes>
     );

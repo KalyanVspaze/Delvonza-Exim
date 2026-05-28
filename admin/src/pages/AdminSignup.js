@@ -3,7 +3,7 @@ import { Link, useNavigate, Navigate } from 'react-router-dom';
 import { Eye, EyeOff } from 'lucide-react';
 import { useAdminAuth } from '../context/AdminAuthContext';
 import RequiredMark from '../components/RequiredMark';
-
+import { FcGoogle } from 'react-icons/fc'; //
 const AdminSignup = () => {
   const navigate = useNavigate();
   const { register, isAuthenticated } = useAdminAuth();
@@ -162,6 +162,17 @@ const AdminSignup = () => {
             {submitting ? 'Creating account…' : 'Create account'}
           </button>
         </form>
+        <button
+          type="button"
+          onClick={() => {
+            const base = process.env.REACT_APP_API_BASE_URL || 'http://localhost:5000/api';
+            window.location.href = `${base}/admin/auth/google`;
+          }}
+           className="w-full mt-4 flex items-center justify-center gap-3 bg-white border border-gray-300 text-gray-800 rounded-lg px-4 py-3 font-semibold hover:bg-gray-100 transition"
+            >
+          <FcGoogle size={20} />
+          Continue with Google
+        </button>
         <p className="mt-6 text-sm text-center text-gray-600">
           Already have an account?{' '}
           <Link to="/login" className="text-primary-600 hover:text-primary-700 font-medium">
