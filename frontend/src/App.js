@@ -12,6 +12,7 @@ import ProfilePage from './pages/ProfilePage';
 import CartPage from './pages/CartPage';
 import OrdersPage from './pages/OrdersPage';
 import CheckoutSuccessPage from './pages/CheckoutSuccessPage';
+import ForgotPasswordPage from './pages/ForgotPasswordPage';
 
 // Scroll to top component
 function ScrollToTop() {
@@ -69,6 +70,7 @@ function App() {
         <Route path="/cart" element={<CartPage />} />
         <Route path="/orders" element={<OrdersPage />} />
         <Route path="/checkout/success" element={<CheckoutSuccessPage />} />
+        <Route path="/forgot-password" element={<ForgotPasswordPage />} />
       </Routes>
     </Router>
   );
