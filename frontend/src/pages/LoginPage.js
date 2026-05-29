@@ -71,8 +71,6 @@ const LoginPage = () => {
                 Login
               </button>
             </form>
-
-            {/* ✅ Google Button Updated */}
             <button
               type="button"
               onClick={() => {
